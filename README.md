@@ -14,6 +14,17 @@ Le JavaScript n'est pas typé, il n'y aura donc pas déclaration de type au mome
 - pour accéder à un élement d'un objet : `console.log("Valeur de la première clef " + premiereVariable.clef);`
 - pour ajouter une entrée : `premiereVariable.nouvelleClef = "nouvelleClef";`
 - si on omet `var` la variable sera globale
+- pour déclarer un fonction
+
+		function maFonction(){
+			alert('bloup');
+		}
+- le JS lit le code de haut en bas mais les fonctions sont chargées au chargement du script. On peut les appeler de n'importe où.
+- on peut créer des fonctions anonymes qui sont chargées au moment ou elles sont déclarées. On ne peut donc pas les appeler de n'import où.
+
+		var uneFonction = function () {
+			console.log('Fonction avec variable');
+		};
 
 ##AJAX
 

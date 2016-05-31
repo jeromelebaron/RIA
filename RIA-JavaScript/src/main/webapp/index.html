@@ -7,16 +7,20 @@
 	var premiereVariable = 10;
 	console.log(premiereVariable);
 	console.log(typeof(premiereVariable));
+
 	premiereVariable = "Bloop";
 	console.log(typeof(premiereVariable));
+	
 	premiereVariable = true;
 	console.log(typeof(premiereVariable));
+	
 	premiereVariable = ["text", 1, true];
 	console.log(typeof(premiereVariable));
 	console.log(premiereVariable);
-	console.log(typeof(premiereVariable));
+	
 	premiereVariable = new Array("un", "deux");
 	console.log(typeof(premiereVariable));
+
 	premiereVariable = {
 		clef: "valeur", 
 		clef2: 2,
@@ -25,8 +29,34 @@
 	console.log(premiereVariable);
 	console.log("Valeur de la première clef " + premiereVariable.clef);
 	console.log("Valeur de la deuxième clef " + premiereVariable["clef2"]);
+
 	premiereVariable.nouvelleClef = "nouvelleClef";
 	console.log(premiereVariable);
+
+	maFonction();
+
+	console.log(maFonctionRetour());
+
+	avecArgument('Jérome');
+
+	function maFonction(){
+		alert('bloup');
+	}
+
+	function maFonctionRetour () {
+		return 'retour de fonction';	
+	}
+
+	function avecArgument (argument) {
+		 alert('Bonjour ' + argument);
+	}
+
+	var uneFonction = function () {
+		console.log('Fonction avec variable');
+	};
+
+	uneFonction();
+
 	</script>
 </head>
 <body>
