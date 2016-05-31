@@ -21,17 +21,16 @@
 	document.getElementsByClassName('laClasse');
 
 	function changementCouleur () {
-		document.getElementById('paragraphe').style.color ='blue';
+		document.getElementById('paragraphe').style.color = 'blue';
 		var tousLesSpan = document.getElementsByTagName('span');
 		for (var i = tousLesSpan.length - 1; i >= 0; i--) {
-			tousLesSpan[i].style.color= 'red';
+			tousLesSpan[i].style.color = 'red';
 		};
 		var spanParaDeux = document.getElementById('deuxPara').getElementsByTagName('span');
 		for (var i = spanParaDeux.length - 1; i >= 0; i--) {
 			spanParaDeux[i].style.fontWeight = 'bold';
 		};
 	}
-
 	</script>
 </head>
 <body onload="changementCouleur()">
