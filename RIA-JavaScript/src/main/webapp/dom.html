@@ -20,24 +20,41 @@
 
 	document.getElementsByClassName('laClasse');
 
+	var paraDeux;
+
 	function changementCouleur () {
 		document.getElementById('paragraphe').style.color = 'blue';
 		var tousLesSpan = document.getElementsByTagName('span');
 		for (var i = tousLesSpan.length - 1; i >= 0; i--) {
 			tousLesSpan[i].style.color = 'red';
 		};
-		var spanParaDeux = document.getElementById('deuxPara').getElementsByTagName('span');
+		paraDeux = document.getElementById('deuxPara');
+		var spanParaDeux = paraDeux.getElementsByTagName('span');
 		for (var i = spanParaDeux.length - 1; i >= 0; i--) {
 			spanParaDeux[i].style.fontWeight = 'bold';
 		};
 	}
+
+	var taillePolice = 20;
+
+	function changeTaille (elementClike) {
+		var tailleActuelle = elementClike.style.fontSize;
+		if (tailleActuelle === '') {
+			tailleActuelle = 15;
+		} else {
+			tailleActuelle = parseInt(tailleActuelle.substr(0, (tailleActuelle.length -2)));
+			tailleActuelle += 5;
+		}
+		elementClike.style.fontSize = tailleActuelle + 'px';
+	}  
+
 	</script>
 </head>
 <body onload="changementCouleur()">
-	<p id="paragraphe">
+	<p id="paragraphe" onclick="changeTaille(this)">
 		Je suis un magnifique <span>paragraphe</span>
 	</p>
-	<p id="deuxPara">
+	<p id="deuxPara" onclick="changeTaille(this)">
 		Je suis le second paragraphe <span>avec des éléments à l'intérieur</span>
 	</p>
 	<span>Tout seul</span>
