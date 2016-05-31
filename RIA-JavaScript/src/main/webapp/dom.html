@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Manipulation du DOM</title>
+	<script type="text/javascript">
+	var maVariable = "Bonjour";
+	console.log(window);
+
+	function bodyReady () {
+		var paragraphe = document.getElementById('paragraphe');
+		console.log(paragraphe.innerHTML);
+		console.log(paragraphe.textContent);
+		paragraphe.innerHTML = "Je t'ai changé";
+	}
+
+	document.getElementsByTagName('p');
+
+	document.getElementsByName('p');
+
+	document.getElementsByClassName('laClasse');
+
+	function changementCouleur () {
+		document.getElementById('paragraphe').style.color ='blue';
+		var tousLesSpan = document.getElementsByTagName('span');
+		for (var i = tousLesSpan.length - 1; i >= 0; i--) {
+			tousLesSpan[i].style.color= 'red';
+		};
+		var spanParaDeux = document.getElementById('deuxPara').getElementsByTagName('span');
+		for (var i = spanParaDeux.length - 1; i >= 0; i--) {
+			spanParaDeux[i].style.fontWeight = 'bold';
+		};
+	}
+
+	</script>
+</head>
+<body onload="changementCouleur()">
+	<p id="paragraphe">
+		Je suis un magnifique <span>paragraphe</span>
+	</p>
+	<p id="deuxPara">
+		Je suis le second paragraphe <span>avec des éléments à l'intérieur</span>
+	</p>
+	<span>Tout seul</span>
+</body>
+</html>

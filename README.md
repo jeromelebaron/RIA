@@ -1,8 +1,12 @@
 #RIA
 
+##Introduction
+
 Acronyme pour **R**ich **I**nternet **A**pplication. Il désigne le fait d'enrichir les applications web afin de les faire ressembler à des applications natives, notamment au niveau de confort de navigation. On essayera au maximum d'éviter les rechargements de page et d'utiliser le javaScript pour améliorer l'interface utilisateur.
 
 ##JavaScript
+
+###Bases du langage
 
 Le JavaScript n'est pas typé, il n'y aura donc pas déclaration de type au moment de la création d'une variable. On pourra donc réassigner avec n'importe quel type une variable.
 
@@ -25,6 +29,14 @@ Le JavaScript n'est pas typé, il n'y aura donc pas déclaration de type au mome
 		var uneFonction = function () {
 			console.log('Fonction avec variable');
 		};
+
+###Manipulation du DOM
+
+Le DOM contient toujours un objet racine `window`. Lorsqu'on ajoute une variable JS celle-ci est ajoutée à `window`.
+
+- pour éxécuter des éléments à la fin de leur chargement, on utilisatera la fonction `onload` qui permettra d'appeler une fonction JS une fois l'élément chargé.
+- pou récupérer un élément via son id on utilisera la fonction `getElementById()`
+- pour avoir le contenu d'un élement on utilisera `element.innerHTML` qui renverra tout y compris d'autres éléments HTML. Si on veut seulement le texte, on utilisera `element.textContent`
 
 ##AJAX
 
