@@ -9,3 +9,7 @@ function supprimerDeLaListe (index) {
 		laListe.splice(index, 1);
 	}
 }
+
+function viderLaListe () {
+	laListe = [];
+}

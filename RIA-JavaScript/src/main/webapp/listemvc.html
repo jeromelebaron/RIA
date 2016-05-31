@@ -4,9 +4,12 @@
 	<meta charset="UTF-8">
 	<title>Approche MVC du JS</title>
 	<script type="text/javascript" src="scripts/modele.js" ></script>
+	<script type="text/javascript" src="scripts/vue.js" ></script>
+	<script type="text/javascript" src="scripts/controler.js" ></script>
 </head>
-<body>
-	<label>A ajouter : </label><input type="text"/><input type="button" value="Ajouter"/>
+<body onload="render()">
+	<label>A ajouter : </label><input type="text" id="newItem"/><input type="button" value="Ajouter" onclick="nouvelItem()"/>
+	<input type="button" value="Vider" onclick="viderItems()">
 	<ul id="liste"></ul>
 </body>
 </html>
