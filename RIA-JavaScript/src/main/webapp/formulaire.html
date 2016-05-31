@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Formulaire</title>
+	<script type="text/javascript">
+	var texteSaisi;
+	var paragraphe;
+	var liste;
+	var contenuListe = ['élément déjà présent', 'Moi aussi'];
+
+	function init () {
+		texteSaisi = document.getElementById('texteSaisi');
+		paragraphe = document.getElementById('paragraphe');
+		liste = document.getElementById('liste');
+		for (var i = contenuListe.length - 1; i >= 0; i--) {
+			ajouterALaListe(contenuListe[i]);
+		};
+	}
+
+	function supprimerElement (argument) {
+		liste.removeChild(argument);
+	}
+
+	function ajouterALaListe (argument) {
+		var nouvelElementListe = document.createElement('li');
+		nouvelElementListe.textContent = argument;
+		var boutonCroix = document.createElement('button');
+		boutonCroix.textContent = 'Suppr';
+		boutonCroix.onclick = supprimerElement.bind(null, nouvelElementListe);
+		nouvelElementListe.appendChild(boutonCroix);
+		liste.appendChild(nouvelElementListe);
+	}
+
+	function clickBouton () {
+		ajouterALaListe(texteSaisi.value);
+	}
+
+	function majDirect () {
+		majParagraphe(texteSaisi.value);
+	}
+
+	function majParagraphe (argument) {
+		paragraphe.innerText = "Vous allez ajouter le texte : " + argument;  
+	}
+	</script>
+</head>
+<body onload="init()">
+	<form>
+		<fieldset>
+			<legend>Mon formulaire</legend>
+			<label>Nom : </label><input type="text" id="texteSaisi" onkeyup="majDirect()"/>
+			<input type="button" value="Ajouter" onclick="clickBouton()"/>
+			<ul id="liste">
+			</ul>
+		</fieldset>
+	</form>
+	<p id="paragraphe"></p>
+</body>
+</html>

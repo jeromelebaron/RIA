@@ -37,6 +37,7 @@ Le DOM contient toujours un objet racine `window`. Lorsqu'on ajoute une variable
 - pour éxécuter des éléments à la fin de leur chargement, on utilisatera la fonction `onload` qui permettra d'appeler une fonction JS une fois l'élément chargé.
 - pou récupérer un élément via son id on utilisera la fonction `getElementById()`
 - pour avoir le contenu d'un élement on utilisera `element.innerHTML` qui renverra tout y compris d'autres éléments HTML. Si on veut seulement le texte, on utilisera `element.textContent`
+- pour ajouter un élement dans le DOM on peut le créer via la fonction `document.createElement('p')` puis on l'insère dans le DOM avec la fonction `document.body.appendChild(nouvelElement);`
 
 ##AJAX
 
