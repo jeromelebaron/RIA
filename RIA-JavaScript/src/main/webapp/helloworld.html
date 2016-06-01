@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<title>Premier Ajax</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script type="text/javascript">
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			var response = ajax.responseText;
+			document.getElementById('enCours').textContent = response;
+		}
+	};
+	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/test/salut/', true);
+	ajax.setRequestHeader("Content-type", "application/json");
+	ajax.send();
+	</script>
+</head>
+<body >
+	<div class="container">
+		<p id="enCours"></p>
+	</div>
+</body>
+</html>
+
