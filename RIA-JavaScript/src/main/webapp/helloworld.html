@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">	
 	<title>Premier Ajax</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script type="text/javascript" src="ajax.js"></script>
 	<script type="text/javascript">
 	var ajax = new XMLHttpRequest();
 	ajax.onreadystatechange = function() {
@@ -12,7 +13,7 @@
 			document.getElementById('enCours').textContent = response;
 		}
 	};
-	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/test/salut/', true);
+	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/test/methode/Lassy/Colley', true);
 	ajax.setRequestHeader("Content-type", "application/json");
 	ajax.send();
 	</script>

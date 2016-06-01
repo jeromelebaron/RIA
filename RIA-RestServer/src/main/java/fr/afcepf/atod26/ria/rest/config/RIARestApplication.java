@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import fr.afcepf.atod26.ria.rest.service.TestRest;
+
 @ApplicationPath("/ria-rest")
 public class RIARestApplication extends Application {
 

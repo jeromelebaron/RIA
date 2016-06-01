@@ -19,7 +19,7 @@
 }, {
 	"id": 4,
 	"nom": "Fido",
-	"race": "Chien de berger",
+	"race": "Chien-de-berger",
 	"age": 6,
 	"lof": false
 }, {
