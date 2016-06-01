@@ -1,14 +1,14 @@
-function nouvelItem () {
+function nouvelItem() {
 	ajouterALaListe(document.getElementById('newItem').value);
 	render();
 }
 
-function supprimerItem (index) {
+function supprimerItem(index) {
 	supprimerDeLaListe(index);
 	render();
 }
 
-function viderItems () {
-	 viderLaListe();
-	 render();
+function viderItems() {
+	viderLaListe();
+	render();
 }

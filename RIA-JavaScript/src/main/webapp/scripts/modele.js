@@ -1,15 +1,15 @@
-var laListe = ['ga', 'zo','meu'];
+var laListe = ['ga', 'zo', 'meu'];
 
-function ajouterALaListe (argument) {
+function ajouterALaListe(argument) {
 	laListe.push(argument);
 }
 
-function supprimerDeLaListe (index) {
+function supprimerDeLaListe(index) {
 	if (typeof laListe[index] != 'undefined') {
 		laListe.splice(index, 1);
 	}
 }
 
-function viderLaListe () {
+function viderLaListe() {
 	laListe = [];
 }

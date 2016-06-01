@@ -41,4 +41,6 @@ Le DOM contient toujours un objet racine `window`. Lorsqu'on ajoute une variable
 
 ##AJAX
 
+Cela permet de faire des requêtes serveurs avec du JavaScript et évite ainsi de recharger la page.
+
 ##AngularJs

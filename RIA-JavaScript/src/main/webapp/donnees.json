@@ -1,0 +1,33 @@
+{
+	"listeChien": [{
+		"id": 1,
+		"nom": "Croc-blanc",
+		"race": "Chien-loup",
+		"age": 4,
+		"lof": true
+	}, {
+		"id": 2,
+		"nom": "Togo",
+		"race": "Fox-terrier",
+		"age": 3,
+		"lof": false
+	}, {
+		"id": 3,
+		"nom": "Belle",
+		"race": "Saint-Bernard",
+		"age": 2,
+		"lof": true
+	}, {
+		"id": 4,
+		"nom": "Fido",
+		"race": "Chien de berger",
+		"age": 6,
+		"lof": false
+	}, {
+		"id": 5,
+		"nom": "Lassy",
+		"race": "Colley",
+		"age": 10,
+		"lof": true
+	}]
+}

@@ -1,0 +1,22 @@
+{
+	"clefString": "uneString",
+	"clefNumerique": 10,
+	"clefBooleenne": true,
+	"clefTableau": [
+		"les",
+		"différentes",
+		"valeurs",
+		5,
+		false
+	],
+	"clefObjet": {
+		"sousClef": "sousValeur"
+	},
+	"clefTableauObjet": [{
+		"id": 1,
+		"nom": "bloop"
+	}, {
+		"id": 2,
+		"nom": "secondBloop"
+	}]
+}
