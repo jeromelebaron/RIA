@@ -4,23 +4,66 @@
 	<meta charset="UTF-8">	
 	<title>Premier Ajax</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript" src="scripts/ajax.js"></script>
 	<script type="text/javascript">
-	var ajax = new XMLHttpRequest();
-	ajax.onreadystatechange = function() {
-		if (ajax.readyState == 4 && ajax.status == 200) {
-			var response = ajax.responseText;
-			document.getElementById('enCours').textContent = response;
-		}
-	};
-	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/test/methode/Lassy/Colley', true);
-	ajax.setRequestHeader("Content-type", "application/json");
-	ajax.send();
+	var nomChien;
+	var raceChien;
+	var url;
+
+	function chercher () {
+		document.getElementById('enCours').textContent ="Recherche en cours";
+		nomChien = document.getElementById('nomChien').value;
+		raceChien = document.getElementById('raceChien').value;
+		url = 'http://localhost:18080/RIA-RestServer/ria-rest/test/methode/' + nomChien + '/' + raceChien;
+		doAjax({
+			url : url,
+			callback : function (response) {
+				afficherLeChien(response);
+				document.getElementById('enCours').textContent = '';
+			},
+			callbackError : function () {
+				 document.getElementById('enCours').textContent = 'Aucun résultat';
+			}
+		})
+	}
+
+	function afficherLeChien (chien) {
+		var chienTrouve = JSON.parse(chien);
+		var para = document.getElementById('resultat');
+		var ul = document.createElement('ul');
+		ul.appendChild(ajouterElementChien(chienTrouve.id));
+		ul.appendChild(ajouterElementChien(chienTrouve.nom));
+		ul.appendChild(ajouterElementChien(chienTrouve.race));
+		ul.appendChild(ajouterElementChien(chienTrouve.age));
+		ul.appendChild(ajouterElementChien(chienTrouve.isLof));
+		para.appendChild(ul);
+	}
+
+	function ajouterElementChien (argument) {
+		var li = document.createElement('li');
+		li.textContent = argument;
+		return li;
+	}
 	</script>
 </head>
 <body >
 	<div class="container">
-		<p id="enCours"></p>
+		<div class="row">
+			<label>Nom : </label>
+			<input type="text" id="nomChien">
+		</div>
+		<div class="row">
+			<label>Race : </label>
+			<input type="text" id="raceChien">
+		</div>
+		<div class="row">
+			<h3>Résultat</h3>
+			<p id="enCours"></p>
+			<p id="resultat"></p>
+		</div>
+		<div class="row">
+			<button onclick="chercher()">Chercher</button>
+		</div>
 	</div>
 </body>
 </html>

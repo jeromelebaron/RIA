@@ -26,8 +26,11 @@ public class TestRest {
         /*IDaoPetitChien daoPetitChien = new DaoPetitChienImpl();
         return daoPetitChien.getByNomAndRace(paramNom, paramRace);*/
         PetitChien petitChien = new PetitChien();
+        petitChien.setId(5);
         petitChien.setNom(paramNom);
         petitChien.setRace(paramRace);
+        petitChien.setAge(10);
+        petitChien.setLof(true);
         return petitChien;
     }
 }
