@@ -43,4 +43,16 @@ Le DOM contient toujours un objet racine `window`. Lorsqu'on ajoute une variable
 
 Cela permet de faire des requêtes serveurs avec du JavaScript et évite ainsi de recharger la page.
 
+Voici la procédure classique pour faire une requête AJAX depuis du code JS :
+
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4 && ajax.status == 200) {
+			responseAjax = ajax.responseText;$
+		}
+	};
+	ajax.open('GET', 'donnees.json', true);
+	ajax.setRequestHeader("Content-type", "application/json");
+	ajax.send();
+
 ##AngularJs
