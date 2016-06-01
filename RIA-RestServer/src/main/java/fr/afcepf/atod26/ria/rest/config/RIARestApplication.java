@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import fr.afcepf.atod26.ria.rest.service.DaoChienRest;
 import fr.afcepf.atod26.ria.rest.service.TestRest;
 
 @ApplicationPath("/ria-rest")
@@ -19,6 +20,7 @@ public class RIARestApplication extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> ressources = new HashSet<Class<?>>();
         ressources.add(TestRest.class);
+        ressources.add(DaoChienRest.class);
         return ressources;
     }
 }
