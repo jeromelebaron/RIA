@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Evenements en jQuery</title>
+	<script type="text/javascript" src="scripts/jquery-2.2.4.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		$('#para').on('click', function () {
+			alert('para');
+		});
+		$('#para').off('click');
+		$('#para').click(function() {
+			console.log('coucou');
+		});
+		$('#para').click();
+	});
+	</script>
+</head>
+<body>
+	<p>Lorem ipsum Reprehenderit non ex qui dolor.</p>
+	<p id="para">Lorem ipsum Commodo dolore magna anim ullamco.</p>
+	<div>
+		<label>A ajouter : </label><input type="text" id="ajout">
+	</div>
+	<div>
+		
+	</div>
+</body>
+</html>
