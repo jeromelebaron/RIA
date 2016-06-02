@@ -5,17 +5,34 @@
 	<script type="text/javascript" src="scripts/jquery-2.2.4.js"></script>
 	<script type="text/javascript">
 	$(function () {
-		$('p').css('color', 'red');
-	})
+		$('.uneClasse').css(
+			{'background-color' : 'green'}
+			);
+		$('p .uneClasse').css(
+			{'font-weight' : 'bold'}
+			);
+		$('span').css(
+			{'font-size' : '20px'}
+			);
+		$('p.uneClasse').css(
+			{'color' : 'yellow'}
+			);
+		$('p').attr('name', 'bloup');
+		var div = $('<div>');
+		div.text('nouvelle div');
+		$('p').append(div);
+		$('<span>').text('bloup').css('color', 'blue').appendTo('#paraJQuery');
+	});
+	
 	</script>
 </head>
 <body>
 	<p id="paraJQuery">
-		Lorem ipsum Officia nisi pariatur adipisicing nulla ea magna qui occaecat fugiat quis fugiat ut do culpa irure exercitation.
+		Lorem ipsum Officia nisi pariatur adipisicing nulla ea <span class="uneClasse">magna qui occaecat fugiat quis</span> fugiat ut do culpa irure exercitation.
 	</p>
-	<p class="classJQuery">
+	<p class="uneClasse">
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mediocrem natura que magistra, assumenda inane triarius pericula theseo.
 	</p>
-	<div>Lorem ipsum Magna officia reprehenderit eiusmod nulla. <span>Lorem ipsum In ullamco pariatur minim labore.</span></div>
+	<div class="uneClasse">Lorem ipsum Magna officia <p>reprehenderit eiusmod</p> nulla. <span>Lorem ipsum In ullamco pariatur minim labore.</span></div>
 </body>
 </html>
