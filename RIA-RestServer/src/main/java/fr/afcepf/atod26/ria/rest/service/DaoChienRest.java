@@ -58,7 +58,7 @@ public class DaoChienRest {
      * @return un {@link PetitChien}.
      */
     @GET
-    @Path("/{id}")
+    @Path("/id/{id}")
     public PetitChien getChienById(@PathParam(value = "id") Integer paramId) {
         return daoPetitChien.getChienById(paramId);
     }

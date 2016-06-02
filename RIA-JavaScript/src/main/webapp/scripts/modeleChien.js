@@ -10,7 +10,7 @@ function listerChiens() {
 
 function getChienById(idChien) {
 	 return doAjax({
-	 	url : webServiceURL + '/' + idChien
+	 	url : webServiceURL + '/id/' + idChien
 	 }).then(function (reponse) {
 	 	return JSON.parse(reponse);
 	 });

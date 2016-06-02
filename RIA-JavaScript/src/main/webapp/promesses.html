@@ -16,7 +16,8 @@
 
 	getChienById(1).then(function (reponse) {
 		console.log(reponse);
-	}).catch(function () {
+	}).catch(function (reponse) {
+		console.log(reponse);
 		console.log('Erreur dans la méthode getChienById');
 	});
 

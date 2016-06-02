@@ -25,7 +25,7 @@ function doAjax(parametres) {
 						success(ajax.responseXML);
 					}
 				} else {
-					error(ajax.status + '-----' + ajax.statusText);
+					error(ajax.status + ' -- ' + ajax.statusText);
 				}
 			}
 		};

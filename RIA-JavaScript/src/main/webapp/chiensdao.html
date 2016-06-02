@@ -4,58 +4,19 @@
 	<meta charset="UTF-8">	
 	<title>Premier Ajax</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script type="text/javascript">
-	var responseAjax;
-	var ajax = new XMLHttpRequest();
-	var textAttente;
-
-	function appelAjax (callback) {
-		textAttente = document.getElementById('enCours');
-		ajax.onreadystatechange = function() {
-			if (ajax.readyState == 4 && ajax.status == 200) {
-				responseAjax = JSON.parse(ajax.responseText);
-				creerTableauChien(responseAjax);
-				textAttente.textContent = '';
-			}
-			onAjaxSuccess : function success () {
-				callback();
-			}
- 		};
-		textAttente.textContent = "Chargement en cours";
-	}
-
-	function creerTableauChien (listeChien) {
-		var corpsTableau = document.getElementById('contenuTableau');
-		listeChien.forEach( function(element, index) {
-			var nouvelleLigne = document.createElement('tr');
-			nouvelleLigne.appendChild(creerCellule(element.id));
-			corpsTableau.appendChild(nouvelleLigne);
-			nouvelleLigne.appendChild(creerCellule(element.nom));
-			corpsTableau.appendChild(nouvelleLigne);
-			nouvelleLigne.appendChild(creerCellule(element.race));
-			corpsTableau.appendChild(nouvelleLigne);
-			nouvelleLigne.appendChild(creerCellule(element.age));
-			corpsTableau.appendChild(nouvelleLigne);
-			nouvelleLigne.appendChild(creerCellule(element.lof));
-			corpsTableau.appendChild(nouvelleLigne);
-		});
-	}
-
-	function creerCellule (element) {
-		var cellule = document.createElement('td');
-		cellule.textContent = element;
-		return cellule; 
-	}
-
-	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/chien/chiens', true);
-	ajax.setRequestHeader("Content-type", "application/json");
-	ajax.send();
-
-	</script>
+	<script type="text/javascript" src="scripts/jquery-2.2.4.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/ajaxpromise.js"></script>
+	<script type="text/javascript" src="scripts/chienVue.js"></script>
+	<script type="text/javascript" src="scripts/modeleChien.js"></script>
+	<script type="text/javascript" src="scripts/chienControler.js"></script>
 </head>
-<body onload="appelAjax()">
+<body>
 	<div class="container" id="contenant">
 		<p id="enCours"></p>
+		<div class="row">
+			<button onclick="controlerChien.listerTousLesChiens()" class="btn btn-primary">Tous les chiens</button>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -69,6 +30,21 @@
 			<tbody id="contenuTableau">
 			</tbody>
 		</table>
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" id="titre"></h4>
+					</div>
+					<div class="modal-body" id="detailChien">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
