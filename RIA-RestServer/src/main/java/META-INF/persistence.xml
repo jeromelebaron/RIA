@@ -6,7 +6,7 @@
 		<jta-data-source>java:jboss/chenil</jta-data-source>
 		<class>fr.afcepf.atod26.ria.rest.entity.PetitChien</class>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="none" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 		</properties>

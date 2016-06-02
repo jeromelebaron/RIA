@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<title>Premier Ajax</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script type="text/javascript">
+	var responseAjax;
+	var ajax = new XMLHttpRequest();
+	var textAttente;
+
+	function appelAjax (callback) {
+		textAttente = document.getElementById('enCours');
+		ajax.onreadystatechange = function() {
+			if (ajax.readyState == 4 && ajax.status == 200) {
+				responseAjax = JSON.parse(ajax.responseText);
+				creerTableauChien(responseAjax);
+				textAttente.textContent = '';
+			}
+			onAjaxSuccess : function success () {
+				callback();
+			}
+ 		};
+		textAttente.textContent = "Chargement en cours";
+	}
+
+	function creerTableauChien (listeChien) {
+		var corpsTableau = document.getElementById('contenuTableau');
+		listeChien.forEach( function(element, index) {
+			var nouvelleLigne = document.createElement('tr');
+			nouvelleLigne.appendChild(creerCellule(element.id));
+			corpsTableau.appendChild(nouvelleLigne);
+			nouvelleLigne.appendChild(creerCellule(element.nom));
+			corpsTableau.appendChild(nouvelleLigne);
+			nouvelleLigne.appendChild(creerCellule(element.race));
+			corpsTableau.appendChild(nouvelleLigne);
+			nouvelleLigne.appendChild(creerCellule(element.age));
+			corpsTableau.appendChild(nouvelleLigne);
+			nouvelleLigne.appendChild(creerCellule(element.lof));
+			corpsTableau.appendChild(nouvelleLigne);
+		});
+	}
+
+	function creerCellule (element) {
+		var cellule = document.createElement('td');
+		cellule.textContent = element;
+		return cellule; 
+	}
+
+	ajax.open('GET', 'http://localhost:18080/RIA-RestServer/ria-rest/chien/chiens', true);
+	ajax.setRequestHeader("Content-type", "application/json");
+	ajax.send();
+
+	</script>
+</head>
+<body onload="appelAjax()">
+	<div class="container" id="contenant">
+		<p id="enCours"></p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nom</th>
+					<th>Race</th>
+					<th>Age</th>
+					<th>Lof</th>
+				</tr>
+			</thead>
+			<tbody id="contenuTableau">
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

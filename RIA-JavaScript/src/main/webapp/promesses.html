@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Promesse JS</title>
+	<script type="text/javascript" src="scripts/ajaxpromise.js"></script>
+	<script type="text/javascript" src="scripts/modeleChien.js"></script>
+	<script type="text/javascript">
+
+	listerChiens().then(function (reponse) {
+		console.log(reponse);
+	}).catch(function (reponse) {
+		console.log(reponse);
+		console.log('Erreur dans la méthode listerChiens');
+	});
+
+	getChienById(1).then(function (reponse) {
+		console.log(reponse);
+	}).catch(function () {
+		console.log('Erreur dans la méthode getChienById');
+	});
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
