@@ -33,7 +33,7 @@ public class DaoPetitChienImpl implements IDaoPetitChien {
     /**
      * La requête HQL pour récupérer tous les {@link PetitChien}.
      */
-    private static final String GET_ALL_CHIEN = "FROM PetitChien";
+    private static final String GET_ALL_CHIEN = "FROM PetitChien p";
 
     /**
      * {@inheritDoc}
@@ -57,7 +57,7 @@ public class DaoPetitChienImpl implements IDaoPetitChien {
      */
     @Override
     public List<PetitChien> getAllChien() {
-        TypedQuery<PetitChien> query = em.createNamedQuery(GET_ALL_CHIEN, PetitChien.class);
+        TypedQuery<PetitChien> query = em.createQuery(GET_ALL_CHIEN, PetitChien.class);
         return query.getResultList();
     }
 

@@ -12,16 +12,16 @@ function doAjax(parametres) {
 		data: '',
 		callback: function() {},
 		callbackError: function() {}
-	}
+	};
 	assignerOptions(options, parametres);
 
 	var ajax = new XMLHttpRequest();
 	ajax.onreadystatechange = function() {
 		if (ajax.readyState === 4 && ajax.status === 200) {
 			if (options.typeRetour === 'text') {
-				options.callback(ajax.responseText)
+				options.callback(ajax.responseText);
 			} else {
-				options.callback(ajax.responseXML)
+				options.callback(ajax.responseXML);
 			}
 		} else {
 			options.callbackError();
@@ -37,7 +37,7 @@ function doAjax(parametres) {
  * Si l'une des valeurs est présente dans options alors on l'assigne.
  */
 function assignerOptions(options, parametres) {
-	for (clefParametre in parametres) {
+	for (var clefParametre in parametres) {
 		if (options.hasOwnProperty(clefParametre)) {
 			options[clefParametre] = parametres[clefParametre];
 		}
