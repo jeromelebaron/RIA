@@ -5,6 +5,7 @@ package fr.afcepf.atod26.ria.rest.impl;
 
 import java.util.List;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,17 +15,24 @@ import fr.afcepf.atod26.ria.rest.api.IDaoPetitChien;
 import fr.afcepf.atod26.ria.rest.entity.PetitChien;
 
 /**
- * Description de la classe
+ * L'implémentation du dao du {@link PetitChien}.
  * @author Jérome LE BARON
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
+@Local(IDaoPetitChien.class)
 @Stateless
 public class DaoPetitChienImpl implements IDaoPetitChien {
 
+    /**
+     * L'entity manager JPA.
+     */
     @PersistenceContext(unitName = "RIA-RestServer")
     private EntityManager em;
 
+    /**
+     * La requête HQL pour récupérer tous les {@link PetitChien}.
+     */
     private static final String GET_ALL_CHIEN = "FROM PetitChien";
 
     /**
@@ -35,18 +43,27 @@ public class DaoPetitChienImpl implements IDaoPetitChien {
         return em.find(PetitChien.class, idChien);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PetitChien insertPetitChient(final PetitChien paramPetitChien) {
         em.persist(paramPetitChien);
         return paramPetitChien;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<PetitChien> getAllChien() {
         TypedQuery<PetitChien> query = em.createNamedQuery(GET_ALL_CHIEN, PetitChien.class);
         return query.getResultList();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public PetitChien updateChien(PetitChien paramPetitChien) {
         em.merge(paramPetitChien);
@@ -54,6 +71,9 @@ public class DaoPetitChienImpl implements IDaoPetitChien {
         return paramPetitChien;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void deleteChien(PetitChien paramPetitChien) {
         PetitChien aSuppr = em.merge(paramPetitChien);

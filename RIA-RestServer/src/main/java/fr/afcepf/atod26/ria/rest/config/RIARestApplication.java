@@ -9,6 +9,12 @@ import javax.ws.rs.core.Application;
 import fr.afcepf.atod26.ria.rest.service.DaoChienRest;
 import fr.afcepf.atod26.ria.rest.service.TestRest;
 
+/**
+ * Classe qui permet de faire la configuration des WS Rest.
+ * @author Jérome LE BARON
+ * @author $LastChangedBy$
+ * @version $Revision$ $Date$
+ */
 @ApplicationPath("/ria-rest")
 public class RIARestApplication extends Application {
 

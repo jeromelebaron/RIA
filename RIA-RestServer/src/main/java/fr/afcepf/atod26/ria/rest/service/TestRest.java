@@ -23,8 +23,6 @@ public class TestRest {
     @Path("/methode/{nom}/{race}")
     public PetitChien getByNomAndRace(@PathParam(value = "nom") String paramNom,
             @PathParam(value = "race") String paramRace) {
-        /*IDaoPetitChien daoPetitChien = new DaoPetitChienImpl();
-        return daoPetitChien.getByNomAndRace(paramNom, paramRace);*/
         PetitChien petitChien = new PetitChien();
         petitChien.setId(5);
         petitChien.setNom(paramNom);
