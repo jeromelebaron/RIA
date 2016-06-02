@@ -1,3 +1,8 @@
+/**
+ * Pour encapsuler les appels AJAX du TP
+ * On initialise les différentes options si aucun des paramètres n'est précisé.
+ * 
+ */
 function doAjax(parametres) {
 	var options = {
 		url: '',
@@ -26,6 +31,11 @@ function doAjax(parametres) {
 	ajax.send(options.data);
 }
 
+/**
+ * Pour assigner les options des paramètres AJAX.
+ * On utilise le for in qui permet de parcourir un objet.
+ * Si l'une des valeurs est présente dans options alors on l'assigne.
+ */
 function assignerOptions(options, parametres) {
 	for (clefParametre in parametres) {
 		if (options.hasOwnProperty(clefParametre)) {
