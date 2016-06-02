@@ -4,18 +4,19 @@ var controlerChien = (function() {
 	var chien;
 
 	function listerTousLesChiens() {
+		chiens.splice(0, chiens.length);
 		listerChiens().then(function(reponse) {
 			chiens = reponse;
-			render();
+			chienVue.render();
 		});
-	}
+	};
 
 	function afficherDetail(idChien) {
 		getChienById(idChien).then(function(reponse) {
 			chien = reponse;
-			detailChien();
+			chienVue.detailChien();
 		});
-	}
+	};
 
 	return {
 		getChiens: function() {

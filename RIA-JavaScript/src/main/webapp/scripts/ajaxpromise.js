@@ -26,8 +26,8 @@ function doAjax(parametres) {
 					}
 				} else {
 					error(ajax.status + ' -- ' + ajax.statusText);
-				}
-			}
+				};
+			};
 		};
 		ajax.open(options.methode, options.url, options.asynchrone);
 		ajax.send(options.data);
@@ -43,6 +43,6 @@ function assignerOptions(options, parametres) {
 	for (var clefParametre in parametres) {
 		if (options.hasOwnProperty(clefParametre)) {
 			options[clefParametre] = parametres[clefParametre];
-		}
-	}
-}
+		};
+	};
+};

@@ -6,7 +6,7 @@ function listerChiens() {
 	}).then(function(reponse) {
 		return JSON.parse(reponse);
 	});
-}
+};
 
 function getChienById(idChien) {
 	 return doAjax({
@@ -14,4 +14,4 @@ function getChienById(idChien) {
 	 }).then(function (reponse) {
 	 	return JSON.parse(reponse);
 	 });
-}
+};
