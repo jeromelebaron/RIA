@@ -1,4 +1,4 @@
-/*
+/**
  * Créé le 1 juin 2016 par Jérome LE BARON
  */
 package fr.afcepf.atod26.ria.rest.service;
