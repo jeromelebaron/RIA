@@ -8,11 +8,14 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
@@ -71,6 +74,14 @@ public class DaoChienRest {
     @Path("/chiens")
     public List<PetitChien> getAllChien() {
         return daoPetitChien.getAllChien();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/ajout")
+    public Response ajouterChien(PetitChien paramPetitChien) {
+        daoPetitChien.insertPetitChient(paramPetitChien);
+        return Response.ok(paramPetitChien).build();
     }
 
 }

@@ -12,23 +12,29 @@
 <table class="table table-striped" ng-if="lesChiens.length">
 	<thead>
 		<tr>
-			<th class="col-md-1">Id</th>
-			<th class="col-md-4">Nom</th>
-			<th class="col-md-4">Race</th>
-			<th class="col-md-1">Age</th>
-			<th class="col-md-2">Lof</th>
+			<th ng-repeat="(cle, valeur) in chien" data-ng-click="classement(cle)">
+				{{cle | uppercase}} 
+				<span class="glyphicon glyphicon-collapse-up" data-ng-if="order === cle && !sens"></span>
+				<span class="glyphicon glyphicon-collapse-down" data-ng-if="order === cle && sens"></span>
+			</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr data-ng-repeat="chien in lesChiens | filter: tri" data-ng-click="detailChien(chien.id)">
-			<td class="col-md-1">{{chien.id}}</td>
-			<td class="col-md-4">{{chien.nom}}</td>
-			<td class="col-md-4">{{chien.race}}</td>
-			<td class="col-md-1">{{chien.age}}</td>
-			<td class="col-md-2">{{chien.lof}}</td>
+		<tr data-ng-repeat="chien in lesChiens | filter: tri | orderBy:order:sens"  data-ng-click="detailChien(chien.id)">
+			<td ng-repeat="(cle, valeur) in chien">{{valeur}}</td>
+		</tr>
+		<tr>
+			<td>Auto</td>
+			<td><input type="text" data-ng-model="newChien.nom"></td>
+			<td><input type="text" data-ng-model="newChien.race"></td>
+			<td><input type="text" data-ng-model="newChien.age"></td>
+			<td><input type="checkbox" data-ng-model="newChien.lof"></td>
 		</tr>
 	</tbody>
 </table>
+<div class="row">
+	<button class="btn btn-primary" data-ng-click="ajouterChien()">Ajouter</button>
+</div>
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
@@ -38,9 +44,7 @@
 			</div>
 			<div class="modal-body" id="detailChien">
 				<ul>
-					<li>Race : {{chienClick.race}}</li>
-					<li>Age : {{chienClick.age}}</li>
-					<li>Est inscrit au LOF : {{chienClick.lof}}</li>
+					<li ng-repeat="(cle, valeur) in chienClick">{{cle | uppercase}} : {{valeur}}</li>
 				</ul>
 			</div>
 			<div class="modal-footer">
