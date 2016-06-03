@@ -1,0 +1,17 @@
+Un petit calcul angular {{4+5}}<br/>
+<input type="text" data-ng-model="nom" />
+<br/>
+Bonjour {{nom}}.
+<p data-ng-bind="nom"></p>
+{{fromControler}}
+<p data-ng-bind="fromControler"></p>
+<p>
+	<input type="text" data-ng-model="age" data-ng-change="majeurMineur()">Tu es {{civilite}}.
+</p>
+<form data-ng-submit="ajouterALaListe()">
+	<input type="text" data-ng-model="ajout">
+	<input type="submit" class="btn btn-primary" value="Ajouter"/>
+	<ul>
+		<li data-ng-repeat="item in liste track by $index">{{item}}</li>
+	</ul>
+</form>

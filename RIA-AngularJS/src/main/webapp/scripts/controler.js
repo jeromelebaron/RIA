@@ -27,3 +27,13 @@ moduleControler.controller('premierCtrl', ['$scope', function($scope) {
 	};
 
 }]);
+
+moduleControler.controller('ajaxCtrl', ['$scope', '$http', function($scope, $http) {
+
+	$scope.retour = 'Chargement en cours';
+
+	$http.get('http://localhost:18080/RIA-RestServer/ria-rest/test/salut').then(function (reponse) {
+		$scope.retour = reponse.data;
+	});
+
+}]);
