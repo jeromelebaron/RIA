@@ -5,10 +5,31 @@
 	<script type="text/javascript" src="libs/angular.js"></script>
 	<script type="text/javascript" src="libs/angular-route.js"></script>
 	<script type="text/javascript" src="scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controler.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 	<title>Premier AngularJS</title>
 </head>
 <body>
-
-{{4+5}}
+	<div class="container">
+		<section data-ng-controller="premierCtrl">
+			Un petit calcul angular {{4+5}}<br/>
+			<input type="text" data-ng-model="nom" />
+			<br/>
+			Bonjour {{nom}}.
+			<p data-ng-bind="nom"></p>
+			{{fromControler}}
+			<p data-ng-bind="fromControler"></p>
+			<p>
+				<input type="text" data-ng-model="age" data-ng-change="majeurMineur()">Tu es {{civilite}}.
+			</p>
+			<form data-ng-submit="ajouterALaListe()">
+				<input type="text" data-ng-model="ajout">
+				<input type="submit" class="btn btn-primary" value="Ajouter"/>
+				<ul>
+					<li data-ng-repeat="item in liste track by $index">{{item}}</li>
+				</ul>
+			</form>
+		</section>
+	</div>
 </body>
 </html>

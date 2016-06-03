@@ -1,6 +1,6 @@
 /**
  * Pour déclarer un module Angular.
- * [monApp description]
+ * [monApp premier module Angular]
  * @type {[type]}
  */
-var monApp = angular.module('monApp', []);
+var monApp = angular.module('monApp', ['moduleControler']);
