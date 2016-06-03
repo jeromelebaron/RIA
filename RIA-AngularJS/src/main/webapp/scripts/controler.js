@@ -86,7 +86,7 @@
  	$scope.ajouterChien = function() {
  		$http.post('http://localhost:18080/RIA-RestServer/ria-rest/chien/ajout', $scope.newChien)
  		.then(function(reponse) {
- 			console.log(reponse);
+ 			$scope.lesChiens.push(reponse.data);
  		}).catch(function(reponse) {
  			alert(reponse.data);
  			console.log(reponse.data);
