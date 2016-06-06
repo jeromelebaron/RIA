@@ -5,7 +5,7 @@ package fr.afcepf.atod26.ria.rest.impl;
 
 import java.util.List;
 
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,7 +20,7 @@ import fr.afcepf.atod26.ria.rest.entity.PetitChien;
  * @author $LastChangedBy$
  * @version $Revision$ $Date$
  */
-@Local(IDaoPetitChien.class)
+@Remote(IDaoPetitChien.class)
 @Stateless
 public class DaoPetitChienImpl implements IDaoPetitChien {
 

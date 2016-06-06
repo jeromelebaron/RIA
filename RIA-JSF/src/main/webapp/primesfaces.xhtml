@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<p:dataTable var="chien" value="#{managedBeanChien.lesPetitChiens}">
+		<p:column headerText="Id">
+			<h:outputText value="#{chien.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+			<h:outputText value="#{chien.nom}" />
+		</p:column>
+		<p:column headerText="Race">
+			<h:outputText value="#{chien.race}" />
+		</p:column>
+		<p:column headerText="Age">
+			<h:outputText value="#{chien.age}" />
+		</p:column>
+		<p:column headerText="LOF">
+			<h:outputText value="#{chien.lof}" />
+		</p:column>
+	</p:dataTable>
+
+</body>
+</html>

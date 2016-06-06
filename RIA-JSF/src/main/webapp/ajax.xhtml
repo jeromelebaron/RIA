@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head></h:head>
+<h:body>
+	<h:form id="contenu">
+		<h:inputText value="#{mbSalut.aAjouter}">
+			<f:ajax event="keyup" render="nouveau" />
+		</h:inputText>
+		<h:commandButton action="#{mbSalut.ajouterALaListe()}" value="Ajouter">
+			<f:ajax render=":contenu" execute="@form" />
+		</h:commandButton>
+		<p>
+			Vous allez ajouter àa la liste
+			<h:outputText value="#{mbSalut.aAjouter}" id="nouveau" />
+		</p>
+		<ul id="liste">
+			<ui:repeat var="item" value="#{mbSalut.liste}">
+				<li>#{item}</li>
+			</ui:repeat>
+		</ul>
+	</h:form>
+</h:body>
+</html>
