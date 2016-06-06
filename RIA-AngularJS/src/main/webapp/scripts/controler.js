@@ -41,6 +41,11 @@ moduleControler.controller('ajaxCtrl', ['$scope', 'chienService', function($scop
 	$scope.sens = false;
 	$scope.chien = chienService.chienModele;
 	$scope.newChien = chienService.chienModele;
+	$scope.erreurs = {
+		nom: false,
+		race: false,
+		age: false
+	};
 
 	chienService.getAllChien().then(function(reponse) {
 		$scope.lesChiens = reponse;
@@ -74,11 +79,40 @@ moduleControler.controller('ajaxCtrl', ['$scope', 'chienService', function($scop
 	};
 
 	$scope.ajouterChien = function() {
-		chienService.insertChien($scope.newChien).then(function(reponse) {
-			$scope.lesChiens.push(reponse);
-		}).catch(function(reponse) {
-			console.log(reponse);
-		});
+		if (!verifChien()) {
+			chienService.insertChien($scope.newChien).then(function(reponse) {
+				$scope.lesChiens.push(reponse);
+				$scope.newChien = chienService.chienModele;
+			}).catch(function(reponse) {
+				console.log(reponse);
+			});
+		};
+	};
+
+	function verifChien() {
+		resetErreurs();
+		var enErreur = false;
+		if ($scope.newChien.nom.length <= 2) {
+			$scope.erreurs.nom = true;
+			enErreur = true;
+		};
+		if ($scope.newChien.race.length <= 2) {
+			$scope.erreurs.race = true;
+			enErreur = true;
+		};
+		if ($scope.newChien.age < 0) {
+			$scope.erreurs.age = true;
+			enErreur = true;
+		};
+		return enErreur;
+	};
+
+	function resetErreurs() {
+		$scope.erreurs = {
+			nom: false,
+			race: false,
+			age: false
+		};
 	};
 
 }]);

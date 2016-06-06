@@ -25,9 +25,9 @@
 		</tr>
 		<tr>
 			<td>Auto</td>
-			<td><input type="text" data-ng-model="newChien.nom"></td>
-			<td><input type="text" data-ng-model="newChien.race"></td>
-			<td><input type="text" data-ng-model="newChien.age" size=3></td>
+			<td><input type="text" data-ng-model="newChien.nom"><span data-ng-if="erreurs.nom">Le nom est trop court</span></td>
+			<td><input type="text" data-ng-model="newChien.race"><span data-ng-if="erreurs.race">La race est trop courte</span></td>
+			<td><input type="text" data-ng-model="newChien.age" size=3><span data-ng-if="erreurs.age">L'age doit être positif</span></td>
 			<td><input type="checkbox" data-ng-model="newChien.lof"></td>
 		</tr>
 	</tbody>
