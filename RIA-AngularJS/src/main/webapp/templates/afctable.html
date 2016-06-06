@@ -1,0 +1,14 @@
+<table class="table table-striped" data-ng-if="afcTable.length">
+	<thead>
+		<tr>
+			<th ng-repeat="(cle, valeur) in afcModele">
+				{{cle | uppercase}}
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr data-ng-repeat="item in afcTable">
+			<td ng-repeat="(cle, valeur) in item">{{valeur}}</td>
+		</tr>
+	</tbody>
+</table>

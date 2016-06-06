@@ -9,7 +9,7 @@
 		<option data-ng-repeat="(clefRace, nbRace) in lesRaces" value="{{clefRace}}">{{clefRace}} ({{nbRace}})</option>
 	</select>
 </div>
-<table class="table table-striped" ng-if="lesChiens.length">
+<table class="table table-striped" data-ng-if="lesChiens.length">
 	<thead>
 		<tr>
 			<th ng-repeat="(cle, valeur) in chien" data-ng-click="classement(cle)">
@@ -21,7 +21,7 @@
 	</thead>
 	<tbody>
 		<tr data-ng-repeat="chien in lesChiens | filter: tri | orderBy:order:sens"  data-ng-click="detailChien(chien.id)">
-			<td ng-repeat="(cle, valeur) in chien">{{valeur}}</td>
+			<td data-ng-repeat="(cle, valeur) in chien">{{valeur}}</td>
 		</tr>
 		<tr>
 			<td>Auto</td>
@@ -35,6 +35,7 @@
 <div class="row">
 	<button class="btn btn-primary" data-ng-click="ajouterChien()">Ajouter</button>
 </div>
+<div data-afc-table="lesChiens" data-afc-modele="chien"></div>
 <div class="modal fade" id="myModal" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
