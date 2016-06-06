@@ -3,11 +3,16 @@
  */
 package fr.afcepf.atod26.ria.rest.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -36,11 +41,14 @@ public class DaoChienRest {
      * Pour faire du log.
      */
     private static final Logger LOGGER = Logger.getLogger(DaoChienRest.class);
-
     /**
      * L'instance pour le dao du {@link PetitChien}.
      */
     private IDaoPetitChien daoPetitChien;
+    /**
+     * La liste des erreurs au moment de l'insert du {@link PetitChien}.
+     */
+    private List<String> erreurs = new ArrayList<>();
 
     /**
      * Constructeur.
@@ -76,12 +84,44 @@ public class DaoChienRest {
         return daoPetitChien.getAllChien();
     }
 
+    /**
+     * Pour persister un {@link PetitChien} dans la bdd.
+     * @param paramPetitChien le {@link PetitChien} à ajouter.
+     * @return le {@link PetitChien} avec son id.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/ajout")
     public Response ajouterChien(PetitChien paramPetitChien) {
-        daoPetitChien.insertPetitChient(paramPetitChien);
-        return Response.ok(paramPetitChien).build();
+        validateChien(paramPetitChien);
+        if (erreurs.isEmpty()) {
+            daoPetitChien.insertPetitChient(paramPetitChien);
+            return Response.ok(paramPetitChien).build();
+        } else {
+            return Response.serverError().entity(erreurs).build();
+        }
+    }
+
+    /**
+     * Pour faire les vérifications sur le {@link PetitChien} avant la persistance.
+     */
+    private void validateChien(PetitChien paramPetitChien) {
+        Validator localValidator = Validation.buildDefaultValidatorFactory().getValidator();
+        Set<ConstraintViolation<PetitChien>> localConstraintViolations = localValidator
+                .validate(paramPetitChien);
+        for (ConstraintViolation<PetitChien> localConstraintViolation : localConstraintViolations) {
+            erreurs.add("La propriété " + localConstraintViolation.getPropertyPath()
+                    + " est invalide : " + localConstraintViolation.getMessage()
+                    + ". Donnée entrée : " + localConstraintViolation.getInvalidValue());
+        }
+    }
+
+    public List<String> getErreurs() {
+        return erreurs;
+    }
+
+    public void setErreurs(List<String> paramErreurs) {
+        erreurs = paramErreurs;
     }
 
 }
