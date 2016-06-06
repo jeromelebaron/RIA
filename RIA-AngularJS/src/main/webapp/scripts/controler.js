@@ -30,7 +30,7 @@ moduleControler.controller('premierCtrl', ['$scope', 'premierService', function(
 
 }]);
 
-moduleControler.controller('ajaxCtrl', ['$scope', '$http', function($scope, $http) {
+moduleControler.controller('ajaxCtrl', ['$scope', 'chienService', function($scope, chienService) {
 
 	$scope.retour = 'Chargement en cours';
 	$scope.lesChiens = [];
@@ -39,27 +39,15 @@ moduleControler.controller('ajaxCtrl', ['$scope', '$http', function($scope, $htt
 	$scope.lesRaces = {};
 	$scope.order = 'nom';
 	$scope.sens = false;
-	$scope.chien = {
-		id: null,
-		nom: null,
-		race: null,
-		age: null,
-		lof: null
-	};
-	/**
-	 * Le nouveau chien à ajouter.
-	 * @type {Object}
-	 */
-	$scope.newChien = {
-		id: null,
-		nom: null,
-		race: null,
-		age: null,
-		lof: null
-	};
+	$scope.chien = chienService.chienModele;
+	$scope.newChien = chienService.chienModele;
 
-	$http.get('http://localhost:18080/RIA-RestServer/ria-rest/chien/chiens').then(function(reponse) {
-		$scope.lesChiens = reponse.data;
+	chienService.getAllChien().then(function(reponse) {
+		$scope.lesChiens = reponse;
+		peuplerChiens();
+	});
+
+	function peuplerChiens() {
 		$scope.lesChiens.forEach(function(element, index) {
 			if (!$scope.lesRaces.hasOwnProperty(element.race)) {
 				$scope.lesRaces[element.race] = 1;
@@ -67,11 +55,11 @@ moduleControler.controller('ajaxCtrl', ['$scope', '$http', function($scope, $htt
 				$scope.lesRaces[element.race]++;
 			};
 		});
-	});
+	};
 
 	$scope.detailChien = function(idChien) {
-		$http.get('http://localhost:18080/RIA-RestServer/ria-rest/chien/id/' + idChien).then(function(reponse) {
-			$scope.chienClick = reponse.data;
+		chienService.getChienById(idChien).then(function(reponse) {
+			$scope.chienClick = reponse;
 			angular.element('#myModal').modal();
 		});
 	};
@@ -86,12 +74,11 @@ moduleControler.controller('ajaxCtrl', ['$scope', '$http', function($scope, $htt
 	};
 
 	$scope.ajouterChien = function() {
-		$http.post('http://localhost:18080/RIA-RestServer/ria-rest/chien/ajout', $scope.newChien)
-			.then(function(reponse) {
-				$scope.lesChiens.push(reponse.data);
-			}).catch(function(reponse) {
-				console.log(reponse.data);
-			});
+		chienService.insertChien($scope.newChien).then(function(reponse) {
+			$scope.lesChiens.push(reponse);
+		}).catch(function(reponse) {
+			console.log(reponse);
+		});
 	};
 
 }]);
